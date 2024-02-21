@@ -1,8 +1,10 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import SignedInRoute from "./SignedInRoute";
 import { Login, Signup } from "../Auth";
 import Landingpage from "../Landingpage";
+import Products from "../Products";
+import ProtectedRoute from "./ProtectedRoute";
+import EditProduct from "../Products/EditProduct";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -10,12 +12,39 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <>
+        <ProtectedRoute>
+          <Login />
+        </ProtectedRoute>
+      </>
+    ),
   },
-
   {
     path: "/signup",
-    element: <Signup />,
+    element: (
+      <>
+        <ProtectedRoute>
+          <Signup />
+        </ProtectedRoute>
+      </>
+    ),
+  },
+  {
+    path: "/product",
+    element: (
+      <>
+        <Products />
+      </>
+    ),
+  },
+  {
+    path: "/edit-product/:productId",
+    element: (
+      <>
+        <EditProduct />
+      </>
+    ),
   },
 ]);
 
