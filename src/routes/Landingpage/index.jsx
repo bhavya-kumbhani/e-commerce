@@ -1,16 +1,65 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findAllProducts } from "../../store/slices/productSlice";
+import Slider from "react-slick";
+
 
 const Landingpage = () => {
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   const dispatch = useDispatch();
   const { productData } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(findAllProducts());
   }, []);
   return (
-    <div className="h-screen flex items-center justify-start flex-col gap-14">
-      <div>Image Caraousel</div>
+    <div className="h-screen w-full">
+      <Slider {...settings}>
+        {[0, 1, 2, 3, 4, 5].map(() => {
+          return (
+            <div className="w-full">
+
+              {/* <!-- Component Code --> */}
+
+              <div class="relative h-screen w-full flex flex-col md:flex-row items-center justify-center md:justify-start text-center md:text-left bg-cover bg-center" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80)" }}>
+                <div class="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
+
+                <main class="px-8 sm:px-24 z-10 md:w-2/3">
+                  <div class="">
+                    <p class="m-3 mb-3 text-gray-200 sm:mt-5 sm:max-w-xl md:mt-5 text-xs font-medium">
+                      18 - 21 AUGUST, 2020
+                    </p>
+                    <h2 class="text-4xl tracking-tight leading-10 font-extrabold text-white sm:leading-none md:text-5xl">
+                      Summer Music
+                      <br />
+                      <span class="text-indigo-600">Festival</span>
+                    </h2>
+                    <div class="mt-5 sm:mt-8 sm:flex justify-start">
+                      <div class="rounded-md shadow">
+                        <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-light rounded-full text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-md md:px-10">
+
+                          <span>Get Tickets</span>
+                        </a>
+                      </div>
+
+                    </div>
+                  </div>
+                </main>
+
+              </div>
+            </div>
+          )
+        })}
+
+
+      </Slider>
 
       <div className="flex items-center justify-center gap-10 flex-wrap">
         {productData.map((item, index) => {
@@ -120,7 +169,7 @@ const Landingpage = () => {
           );
         })}
       </div>
-    </div>
+    </div >
   );
 };
 
