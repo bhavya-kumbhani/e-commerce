@@ -14,7 +14,7 @@ export default function Input({
 }){
     return(
         <div className="my-5">
-            <label htmlFor={labelFor} className="sr-only">
+            <label  className="sr-only">
               {labelText}
             </label>
             <input
