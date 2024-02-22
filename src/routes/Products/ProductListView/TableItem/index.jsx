@@ -65,7 +65,7 @@ const TableItem = ({
                         <FontAwesomeIcon icon={faPen} />
                       </div>
                       <div
-                        onClick={() => handleDeleteProduct(item.id)}
+                        onClick={() => handleDeleteProduct(item)}
                         className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       >
                         <FontAwesomeIcon icon={faTrash} />

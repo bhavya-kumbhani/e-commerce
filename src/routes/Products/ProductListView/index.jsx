@@ -62,10 +62,11 @@ const ProductListView = () => {
       });
   };
 
-  const handleDeleteProduct = async (productId) => {
-    dispatch(deleteProduct({ id: productId }))
+  const handleDeleteProduct = async (product) => {
+    dispatch(deleteProduct({ id: product.id }))
       .then((res) => {
         if (res.payload) {
+          alert(JSON.stringify(product));
           toast.success("Product Deleted Successfully!");
         }
       })

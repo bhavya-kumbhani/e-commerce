@@ -37,6 +37,7 @@ const EditProduct = ({
       .then((res) => {
         if (res.payload) {
           toast.success("Product Updated Successfully!");
+          alert(JSON.stringify(inputValue));
           handleToggle();
         }
       })
