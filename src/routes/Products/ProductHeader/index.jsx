@@ -54,7 +54,7 @@ const ProductHeader = ({
             </ul>
           </div>
         </div>
-        <div className="flex items-center justify-end gap-3">
+        <div className="flex items-center justify-end gap-3 flex-wrap">
           <button
             onClick={() => setIsAdd(true)}
             id="dropdownRadioButton"
