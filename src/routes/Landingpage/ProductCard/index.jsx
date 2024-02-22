@@ -1,10 +1,18 @@
-import { faLeftLong, faRightLong, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faArrowRightArrowLeft,
+  faLeftLong,
+  faRightLong,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import Slider from "react-slick";
 
 const ProductCard = () => {
+  const navigate = useNavigate();
   const { productData } = useSelector((state) => state.product);
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -38,8 +46,8 @@ const ProductCard = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: false
-        }
+          dots: false,
+        },
       },
       {
         breakpoint: 768,
@@ -47,8 +55,8 @@ const ProductCard = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: false
-        }
+          dots: false,
+        },
       },
       {
         breakpoint: 576,
@@ -56,8 +64,8 @@ const ProductCard = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: false
-        }
+          dots: false,
+        },
       },
       {
         breakpoint: 476,
@@ -65,8 +73,8 @@ const ProductCard = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: false
-        }
+          dots: false,
+        },
       },
       {
         breakpoint: 390,
@@ -74,10 +82,10 @@ const ProductCard = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: false
-        }
-      }
-    ]
+          dots: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -85,13 +93,19 @@ const ProductCard = () => {
       {/* <div className="flex items-center justify-center gap-10 flex-wrap"> */}
       <div className="pt-[80px] pb-[80px] bg-indigo-100">
         <div className="flex flex-col justify-center items-center ">
-          <h1 className="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-gray-800 dark:text-white pb-[40px]">Feature Product</h1>
+          <h1 className="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-gray-800 dark:text-white pb-[40px]">
+            Feature Product
+          </h1>
         </div>
         <Slider {...settings}>
-          {productData?.map((item, index) => {
+          {productData?.data?.map((item, index) => {
             return (
-              <div className="max-w-xs mx-auto w-96" > {/* Ensure max width of the container */}
-                <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 h-500 p-2 dark:border-gray-700 hover:shadow-lg cursur-pointer"> {/* Set width and height of card */}
+              <div className="max-w-xs mx-auto w-96">
+                {" "}
+                {/* Ensure max width of the container */}
+                <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 h-500 p-2 dark:border-gray-700 hover:shadow-lg cursur-pointer">
+                  {" "}
+                  {/* Set width and height of card */}
                   <a href="#" className="flex justify-center">
                     <img
                       className="rounded-t-lg w-full h-auto"
@@ -102,12 +116,15 @@ const ProductCard = () => {
                   </a>
                   <div className="pt-5 px-3">
                     <a href="#">
-                      <h5 className="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white" style={{
-                        whiteSpace: 'nowrap',
-                        width: "260px",
-                        overflow: 'hidden',
-                        textOverflow: "ellipsis"
-                      }}>
+                      <h5
+                        className="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white"
+                        style={{
+                          whiteSpace: "nowrap",
+                          width: "260px",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
                         {item?.title}
                       </h5>
                     </a>
@@ -115,36 +132,26 @@ const ProductCard = () => {
                       ${item?.price}
                     </p>
                     <div className="flex justify-end">
-
                       <a
                         href="#"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                       >
                         Add to cart
-                        <svg
-                          className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 10"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9"
-                          />
-                        </svg>
+                        <FontAwesomeIcon icon={faArrowRight} />
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-
             );
           })}
         </Slider>
+        <div
+          className="flex justify-end items-center gap-2 pr-4 pt-2 cursor-pointer"
+          onClick={() => navigate("/product")}
+        >
+          View all <FontAwesomeIcon icon={faArrowRight} />
+        </div>
       </div>
       {/* </div> */}
     </>

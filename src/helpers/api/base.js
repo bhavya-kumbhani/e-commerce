@@ -1,6 +1,5 @@
 import axios from "axios";
 import { API } from "./environment/api.config";
-import { authHeader } from "./authHelper";
 
 const axiosApi = axios.create({
   baseURL: `${API.endpoint}/`,
@@ -8,7 +7,7 @@ const axiosApi = axios.create({
 export const axiosInstance = axiosApi;
 export async function get(url, config = {}) {
   return await axiosApi
-    .get(url, { params: config, headers: authHeader() })
+    .get(url, { params: config })
     .then((response) => response)
     .catch((error) => error.response);
 }
@@ -22,14 +21,14 @@ export async function patch(url, data, config = {}) {
 
 export async function post(url, data, config = {}) {
   return axiosApi
-    .post(url, { ...data }, { ...config, headers: authHeader() })
+    .post(url, { ...data }, { ...config })
     .then((response) => response)
     .catch((error) => error.response);
 }
 
 export async function put(url, data, config = {}) {
   return axiosApi
-    .put(url, { ...data }, { ...config, headers: authHeader() })
+    .put(url, { ...data }, { ...config })
     .then((response) => response);
 }
 

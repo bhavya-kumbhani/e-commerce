@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ViewSingleProduct from "../ViewSingleProduct";
 import EditProduct from "../EditProduct";
-
 import {
   deleteProduct,
   getSingleProducts,
@@ -15,7 +14,7 @@ const ProductListView = () => {
   const dispatch = useDispatch();
   const { productData } = useSelector((state) => state.product);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(productData);
+  const [filteredProducts, setFilteredProducts] = useState(productData?.data);
   const [singleProductData, setSingleProductData] = useState([]);
   const [show, setShow] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -25,11 +24,11 @@ const ProductListView = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
-    const filtered = productData.filter((product) =>
+    const filtered = productData?.data?.filter((product) =>
       product.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredProducts(filtered);
-  }, [searchQuery, productData]);
+  }, [searchQuery, productData?.data]);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -92,7 +91,7 @@ const ProductListView = () => {
       setFilteredProducts(filteredProducts.slice().sort(sortByPriceHighToLow));
     }
     if (!selectedOption) {
-      setFilteredProducts(productData);
+      setFilteredProducts(productData?.data);
     }
   };
   return (

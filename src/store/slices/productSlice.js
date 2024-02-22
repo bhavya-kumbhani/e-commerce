@@ -1,5 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { del, get, patch, post, thunkHandler } from "../../helpers/api/base";
+import {
+  del,
+  get,
+  post,
+  put,
+  thunkHandler,
+} from "../../helpers/api/base";
 
 const initialState = {
   productData: [],
@@ -28,10 +34,10 @@ export const getAllCategories = createAsyncThunk(
   }
 );
 export const updateProduct = createAsyncThunk(
-  "/product/category",
+  "/product/update",
   async (body, thunkAPI) => {
     let url = `products/${body.id}`;
-    return thunkHandler(patch(url, body.payload), thunkAPI);
+    return thunkHandler(put(url, body.payload), thunkAPI);
   }
 );
 export const addProduct = createAsyncThunk(
@@ -45,7 +51,7 @@ export const deleteProduct = createAsyncThunk(
   "/product/delete",
   async (body, thunkAPI) => {
     let url = `products/${body.id}`;
-    return thunkHandler(del(url,), thunkAPI);
+    return thunkHandler(del(url), thunkAPI);
   }
 );
 
@@ -60,9 +66,55 @@ export const productSlice = createSlice({
       })
       .addCase(findAllProducts.fulfilled, (state, action) => {
         state.userLoader = false;
-        state.productData = action?.payload?.data;
+        state.productData = action?.payload;
       })
       .addCase(findAllProducts.rejected, (state) => {
+        state.userLoader = false;
+      })
+      .addCase(addProduct.pending, (state) => {
+        state.userLoader = true;
+      })
+      .addCase(addProduct.fulfilled, (state, action) => {
+        state.userLoader = false;
+        state.productData = {
+          ...state.productData,
+          data: [action.payload.data, ...state.productData.data],
+        };
+      })
+      .addCase(addProduct.rejected, (state) => {
+        state.userLoader = false;
+      })
+      .addCase(updateProduct.pending, (state) => {
+        state.userLoader = true;
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        state.userLoader = false;
+        state.productData = {
+          ...state.productData,
+          data: state.productData.data.map((item) => {
+            if (item?.id === action.payload.data?.id) {
+              return action.payload.data;
+            }
+            return item;
+          }),
+        };
+      })
+      .addCase(updateProduct.rejected, (state) => {
+        state.userLoader = false;
+      })
+      .addCase(deleteProduct.pending, (state) => {
+        state.userLoader = true;
+      })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.userLoader = false;
+        state.productData = {
+          ...state.productData,
+          data: state.productData.data.filter(
+            (item) => item?.id !== action?.payload?.data?.id
+          ),
+        };
+      })
+      .addCase(deleteProduct.rejected, (state) => {
         state.userLoader = false;
       })
       .addCase(getAllCategories.pending, (state) => {
