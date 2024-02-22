@@ -52,7 +52,7 @@ export default function Signup() {
         {/* <!-- login container --> */}
         <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
           {/* <!-- form --> */}
-          <div class="md:w-1/2 px-8 md:px-16">
+          <div class="md:w-1/2 px-8 ">
             <h2 class="font-bold text-2xl text-[#002D74]">Sign Up</h2>
             <p class="text-xs mt-4 text-[#002D74]">
               If you are already a member, easily log in
@@ -68,7 +68,7 @@ export default function Signup() {
                 pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){0,16}[a-zA-Z0-9]$"
                 title="User name can only use letters, numbers, underscores and minimum length is 2 characters"
                 isRequired
-                className={"p-2 mt-8 rounded-xl border"}
+                className={"p-2 mt-6 w-full rounded-xl border"}
               />
               <Input
                 type="email"
@@ -80,7 +80,7 @@ export default function Signup() {
                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 title="Please enter a valid email address"
                 isRequired
-                className={"p-2 mt-8 rounded-xl border"}
+                className={"p-2 rounded-xl w-full border"}
               />
               <Input
                 type={showPassword?.password ? "text" : "password"}
@@ -94,7 +94,7 @@ export default function Signup() {
                 onRightIconClick={() => onClick("password")}
                 value={inputValue.password}
                 isRequired
-                className={"p-2 mt-8 rounded-xl border"}
+                className={"p-2 rounded-xl border w-full"}
               />
               <Input
                 type={showPassword?.confirmPassword ? "text" : "password"}
@@ -108,7 +108,7 @@ export default function Signup() {
                 onRightIconClick={() => onClick("confirmPassword")}
                 value={inputValue.confirmPassword}
                 isRequired
-                className={"p-2 mt-8 rounded-xl border"}
+                className={"p-2 rounded-xl border w-full"}
               />
 
               <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">

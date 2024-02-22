@@ -53,7 +53,7 @@ export default function Login() {
         {/* <!-- login container --> */}
         <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
           {/* <!-- form --> */}
-          <div class="md:w-1/2 px-8 md:px-16">
+          <div class="md:w-1/2 px-8">
             <h2 class="font-bold text-2xl text-[#002D74]">Login</h2>
             <p class="text-xs mt-4 text-[#002D74]">
               If you are already a member, easily log in
@@ -70,7 +70,7 @@ export default function Login() {
                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 title="Please enter a valid email address"
                 isRequired
-                className={"p-2 mt-8 rounded-xl border"}
+                className={"p-2 mt-8 w-full rounded-xl border"}
               />
               <Input
                 type={showPassword ? "text" : "password"}
@@ -84,7 +84,7 @@ export default function Login() {
                 onRightIconClick={() => onClick("password")}
                 value={inputValue.password}
                 isRequired
-                className={"p-2 mt-8 rounded-xl border"}
+                className={"p-2 w-full rounded-xl border"}
               />
               <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
                 Login

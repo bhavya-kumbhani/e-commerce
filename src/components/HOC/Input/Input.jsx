@@ -31,15 +31,20 @@ export default function Input({
           placeholder={placeholder}
           title={title}
           pattern={pattern}
+
         />
         {iconRight && (
+          <div className="absolute top-1/2 right-3 -translate-y-1/2 w-[16px] h-[16px] cursor-pointer">
+
             <img
               onClick={() => {
                 onRightIconClick && onRightIconClick();
               }}
               src={iconRight}
               alt="iconRight"
+              className="w-full h-full"
             />
+          </div>
         )}
       </div>
     </>
