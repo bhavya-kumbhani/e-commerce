@@ -1,11 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  del,
-  get,
-  post,
-  put,
-  thunkHandler,
-} from "../../helpers/api/base";
+import { del, get, post, put, thunkHandler } from "../../helpers/api/base";
 
 const initialState = {
   productData: [],
@@ -15,7 +9,13 @@ const initialState = {
 export const findAllProducts = createAsyncThunk(
   "/product/find-all",
   async (body, thunkAPI) => {
-    let url = `products`;
+    let query = "";
+    for (let key in body) {
+      query += `${key}=${body[key]}&`;
+    }
+    query = query.slice(0, -1);
+
+    let url = `products?${query}`;
     return thunkHandler(get(url), thunkAPI);
   }
 );

@@ -4,6 +4,7 @@ import ViewSingleProduct from "../ViewSingleProduct";
 import EditProduct from "../EditProduct";
 import {
   deleteProduct,
+  findAllProducts,
   getSingleProducts,
 } from "../../../store/slices/productSlice";
 import toast from "react-hot-toast";
@@ -22,6 +23,8 @@ const ProductListView = () => {
   const [rowId, setRowId] = useState("");
   const [inputValue, setInputValue] = useState({});
   const [selectedOption, setSelectedOption] = useState(null);
+  const [dataLimit, setDataLimit] = useState(10);
+  const [shortOrder, setShortOrder] = useState("asc");
 
   useEffect(() => {
     const filtered = productData?.data?.filter((product) =>
@@ -29,6 +32,20 @@ const ProductListView = () => {
     );
     setFilteredProducts(filtered);
   }, [searchQuery, productData?.data]);
+
+  useEffect(() => {
+    dispatch(
+      findAllProducts({
+        limit: dataLimit,
+        sort: shortOrder,
+      })
+    )
+      .then((res) => {
+        setFilteredProducts(res?.payload?.data);
+      })
+      .catch((err) => {
+      });
+  }, [dataLimit, shortOrder]);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -105,6 +122,10 @@ const ProductListView = () => {
           setIsAdd={setIsAdd}
           handleSearch={handleSearch}
           searchQuery={searchQuery}
+          dataLimit={dataLimit}
+          setDataLimit={setDataLimit}
+          shortOrder={shortOrder}
+          setShortOrder={setShortOrder}
         />
 
         <TableItem

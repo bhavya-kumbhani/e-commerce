@@ -1,6 +1,6 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 
 const ProductHeader = ({
@@ -10,48 +10,135 @@ const ProductHeader = ({
   setIsAdd,
   handleSearch,
   searchQuery,
+  dataLimit,
+  setDataLimit,
+  shortOrder,
+  setShortOrder,
 }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const handleOnFilter = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
   return (
     <>
       <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-        <div>
-          <Select
-            isClearable={true}
-            value={selectedOption}
-            name="searchid"
-            onChange={handleSelectChange}
-            options={filterOptions}
-            placeholder="featured "
-          />
-          <div
-            id="dropdownRadio"
-            class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute top-auto right-auto bottom-0 left-0 m-0 transform translate-x-1/2 translate-y-1/2"
-            data-popper-reference-hidden=""
-            data-popper-escaped=""
-            data-popper-placement="top"
-          >
-            <ul
-              className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
-              aria-labelledby="dropdownRadioButton"
+        <div className="flex items-center gap-2 justify-start">
+          <div>
+            <Select
+              isClearable={true}
+              value={selectedOption}
+              name="searchid"
+              onChange={handleSelectChange}
+              options={filterOptions}
+              placeholder="featured "
+            />
+            <div
+              id="dropdownRadio"
+              class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute top-auto right-auto bottom-0 left-0 m-0 transform translate-x-1/2 translate-y-1/2"
+              data-popper-reference-hidden=""
+              data-popper-escaped=""
+              data-popper-placement="top"
             >
-              <li>
-                <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <ul
+                className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
+                aria-labelledby="dropdownRadioButton"
+              >
+                <li>
+                  <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                    <input
+                      id="filter-radio-example-1"
+                      type="radio"
+                      value=""
+                      name="filter-radio"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    />
+                    <label
+                      for="filter-radio-example-1"
+                      className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                    >
+                      Last day
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="relative inline-block text-left">
+            <button
+              type="button"
+              className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+              id="dropdown-button"
+              aria-expanded="true"
+              aria-haspopup="true"
+              onClick={handleOnFilter}
+            >
+              Filters
+            </button>
+            <div
+              className={`${
+                isDropdownOpen ? "block" : "hidden"
+              } origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5`}
+            >
+              <div className="p-4">
+                <div className="font-bold">Limit</div>
+                <div className="flex">
                   <input
-                    id="filter-radio-example-1"
+                    type="range"
+                    value={dataLimit}
+                    max={20}
+                    onChange={(e) => {
+                      setDataLimit(e.target.value);
+                    }}
+                    className="flex-1"
+                  />
+                  <input
+                    type="text"
+                    value={dataLimit}
+                    disabled
+                    className="w-1/4 ml-2 border border-gray-300 rounded-md p-2"
+                  />
+                </div>
+
+                <div className="mt-4 mb-2 font-bold">Sorting</div>
+                <div className="flex gap-2">
+                  <input
                     type="radio"
-                    value=""
-                    name="filter-radio"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    name="sort"
+                    id="short-asc"
+                    checked={shortOrder === "asc"}
+                    onChange={(e) => {
+                      if (e.target.checked) setShortOrder("asc");
+                    }}
+                    className="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
                   />
                   <label
-                    for="filter-radio-example-1"
-                    className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                    htmlFor="short-asc"
+                    className="font-medium text-gray-700"
                   >
-                    Last day
+                    Short to ascending
                   </label>
                 </div>
-              </li>
-            </ul>
+
+                <div className="flex gap-2">
+                  <input
+                    type="radio"
+                    name="sort"
+                    id="short-desc"
+                    checked={shortOrder === "desc"}
+                    onChange={(e) => {
+                      if (e.target.checked) setShortOrder("desc");
+                    }}
+                    className="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                  />
+                  <label
+                    htmlFor="short-desc"
+                    className="font-medium text-gray-700"
+                  >
+                    Short to descending
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex items-center justify-end gap-3 flex-wrap">
