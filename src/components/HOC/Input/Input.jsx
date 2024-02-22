@@ -18,7 +18,7 @@ export default function Input({
 }) {
   return (
     <>
-      <div class="relative">
+      <div className="relative">
         <label className="sr-only">{label}</label>
         <input
           onChange={handleOnChange}

@@ -84,6 +84,9 @@ const ProductCard = () => {
     <>
       {/* <div className="flex items-center justify-center gap-10 flex-wrap"> */}
       <div className="pt-[80px] pb-[80px] bg-indigo-100">
+        <div className="flex flex-col justify-center items-center ">
+          <h1 className="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-gray-800 dark:text-white pb-[40px]">Feature Product</h1>
+        </div>
         <Slider {...settings}>
           {productData?.map((item, index) => {
             return (

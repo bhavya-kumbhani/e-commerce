@@ -25,13 +25,13 @@ const Header = () => {
       {/* on click on logo navigate to home */}
       <div className="cursor-pointer">
         {" "}
-        <a href="https://flowbite.com/" class="flex items-center">
+        <a href="https://flowbite.com/" className="flex items-center">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
-            class="h-8 me-3"
+            className="h-8 me-3"
             alt="FlowBite Logo"
           />
-          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-dark">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-dark">
             Flowbite
           </span>
         </a>

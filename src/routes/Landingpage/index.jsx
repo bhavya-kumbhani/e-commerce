@@ -10,6 +10,7 @@ import HeroSection from "./HeroSection";
 import ProductCard from "./ProductCard";
 import Header from "../../components/Layout/Header";
 import Footer from "../../components/Layout/Footer";
+import ShopByCategory from "./ShopByCategory";
 
 const Landingpage = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Landingpage = () => {
     <div className="h-screen w-full">
       <Header />
       <HeroSection />
+      <ShopByCategory />
       <ProductCard />
       <Footer />
     </div>
