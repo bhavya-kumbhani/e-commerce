@@ -7,9 +7,14 @@ import {
   faPen,
   faEye,
   faTrash,
-  faPlus,
+  faPlus
 } from "@fortawesome/free-solid-svg-icons";
-import { deleteProduct, getSingleProducts } from "../../../store/slices/productSlice";
+import Select from "react-select";
+
+import {
+  deleteProduct,
+  getSingleProducts
+} from "../../../store/slices/productSlice";
 import toast from "react-hot-toast";
 const ProductListView = () => {
   const dispatch = useDispatch();
@@ -22,6 +27,8 @@ const ProductListView = () => {
   const [isAdd, setIsAdd] = useState(false);
   const [rowId, setRowId] = useState("");
   const [inputValue, setInputValue] = useState({});
+  const [selectedOption, setSelectedOption] = useState(null);
+
   useEffect(() => {
     const filtered = productData.filter((product) =>
       product.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -61,7 +68,6 @@ const ProductListView = () => {
       });
   };
 
-
   const handleDeleteProduct = async (productId) => {
     dispatch(deleteProduct({ id: productId }))
       .then((res) => {
@@ -73,13 +79,45 @@ const ProductListView = () => {
         console.error("Error:", error.message);
       });
   };
+  const options = [
+    { value: "LowtoHigh", label: "Low to High" },
+    { value: "HightoLow", label: "High to Low" }
+  ];
+  function sortByPriceLowToHigh(a, b) {
+    return a.price - b.price;
+  }
 
+  function sortByPriceHighToLow(a, b) {
+    return b.price - a.price;
+  }
+
+  const handleSelectChange = (selectedOption) => {
+    setSelectedOption(selectedOption);
+    if (selectedOption && selectedOption.value == "LowtoHigh") {
+      setFilteredProducts(filteredProducts.slice().sort(sortByPriceLowToHigh));
+    }
+    if (selectedOption && selectedOption.value == "HightoLow") {
+     
+      setFilteredProducts(filteredProducts.slice().sort(sortByPriceHighToLow));
+    }
+    if(!selectedOption){
+      setFilteredProducts(productData)
+    }
+  };
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg p-3 mt-3">
         <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
           <div>
-            <button
+            <Select
+              isClearable={true}
+              value={selectedOption}
+              name="searchid"
+              onChange={handleSelectChange}
+              options={options}
+              placeholder="featured "
+            />
+            {/* <button
               id="dropdownRadioButton"
               data-dropdown-toggle="dropdownRadio"
               className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -110,7 +148,7 @@ const ProductListView = () => {
                   d="m1 1 4 4 4-4"
                 />
               </svg>
-            </button>
+            </button> */}
             <div
               id="dropdownRadio"
               class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute top-auto right-auto bottom-0 left-0 m-0 transform translate-x-1/2 translate-y-1/2"

@@ -24,12 +24,10 @@ export default function Login() {
   const handleForm = async (e) => {
     e.preventDefault();
     const storedData = JSON.parse(localStorage.getItem("signUpUserData") || []);
-    console.log("🚀 ~ onLoginSubmit ~ storedData:", storedData);
     const user = storedData.find(
       (item) =>
         item.email === inputValue.email && item.password === inputValue.password
     );
-    console.log("🚀 ~ handleForm ~ user:", user);
 
     if (inputValue.confirmPassword) {
       if (inputValue.password !== inputValue.confirmPassword) {

@@ -7,7 +7,7 @@ import {
   addProduct,
   findAllProducts,
   getSingleProducts,
-  updateProduct,
+  updateProduct
 } from "../../../store/slices/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,7 +19,7 @@ const EditProduct = ({
   rowId,
   isAdd,
   inputValue,
-  setInputValue,
+  setInputValue
 }) => {
   const dispatch = useDispatch();
   const { allCategories } = useSelector((state) => state.product);
@@ -72,7 +72,7 @@ const EditProduct = ({
           name: res.payload.data.title,
           price: res.payload.data.price,
           description: res.payload.data.description,
-          category: res.payload.data.category,
+          category: res.payload.data.category
         });
       })
       .catch((error) => {
