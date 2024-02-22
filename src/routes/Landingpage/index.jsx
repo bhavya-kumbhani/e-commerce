@@ -65,7 +65,7 @@ const Landingpage = () => {
       </Slider>
 
       <div className="flex items-center justify-center gap-10 flex-wrap">
-        {productData.map((item, index) => {
+        {productData?.map((item, index) => {
           return (
             <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
               <a

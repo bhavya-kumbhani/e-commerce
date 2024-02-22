@@ -28,9 +28,13 @@ const ProductListView = ({
   };
 
   const handleShow = async (id) => {
-    console.log("🚀 ~ handleShow ~ id:", id)
+    console.log("🚀 ~ handleShow ~ id:", id);
     getSingleProduct(id);
     setShow(true);
+  };
+
+  const handleToggle = () => {
+    setShow(!show);
   };
   return (
     <>
@@ -189,7 +193,9 @@ const ProductListView = ({
           </tbody>
         </table>
       </div>
-      <ViewSingleProduct show={show} singleProductData={singleProductData}/>
+      {show && (
+        <ViewSingleProduct show={show} singleProductData={singleProductData} handleToggle={handleToggle}/>
+      )}
     </>
   );
 };
