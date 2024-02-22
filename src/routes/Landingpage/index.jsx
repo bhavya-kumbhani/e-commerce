@@ -9,6 +9,7 @@ import ProductCard from "./ProductCard";
 import Header from "../../components/Layout/Header";
 import Footer from "../../components/Layout/Footer";
 import ShopByCategory from "./ShopByCategory";
+import OurSevices from "./OurSevices";
 
 const Landingpage = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Landingpage = () => {
       <HeroSection />
       <ShopByCategory />
       <ProductCard />
+      <OurSevices />
       <Footer />
     </div>
   );
