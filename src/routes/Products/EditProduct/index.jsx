@@ -1,17 +1,14 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import toast from "react-hot-toast";
-import { useNavigate, useParams } from "react-router-dom";
 import Input from "../../../components/HOC/Input/Input";
 import {
   addProduct,
-  findAllProducts,
   getSingleProducts,
   updateProduct,
 } from "../../../store/slices/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const EditProduct = ({
   handleToggle,
@@ -40,7 +37,6 @@ const EditProduct = ({
       .then((res) => {
         if (res.payload) {
           toast.success("Product Updated Successfully!");
-          // dispatch(findAllProducts());
           handleToggle();
         }
       })
@@ -55,7 +51,6 @@ const EditProduct = ({
       .then((res) => {
         if (res.payload) {
           toast.success("Product Added Successfully!");
-          // dispatch(findAllProducts());
           handleToggle();
         }
       })

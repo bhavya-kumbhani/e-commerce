@@ -4,7 +4,6 @@ import { Login, Signup } from "../Auth";
 import Landingpage from "../Landingpage";
 import Products from "../Products";
 import ProtectedRoute from "./ProtectedRoute";
-import EditProduct from "../Products/EditProduct";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,9 +13,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
       <>
-        <ProtectedRoute>
-          <Login />
-        </ProtectedRoute>
+        <Login />
       </>
     ),
   },
@@ -24,9 +21,7 @@ const router = createBrowserRouter([
     path: "/signup",
     element: (
       <>
-        <ProtectedRoute>
-          <Signup />
-        </ProtectedRoute>
+        <Signup />
       </>
     ),
   },
@@ -34,15 +29,9 @@ const router = createBrowserRouter([
     path: "/product",
     element: (
       <>
-        <Products />
-      </>
-    ),
-  },
-  {
-    path: "/edit-product/:productId",
-    element: (
-      <>
-        <EditProduct />
+        <ProtectedRoute>
+          <Products />
+        </ProtectedRoute>
       </>
     ),
   },
