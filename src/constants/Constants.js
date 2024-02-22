@@ -44,28 +44,32 @@ export const bannerData = [
 
 export const filterOptions = [
   { value: "LowtoHigh", label: "Low to High" },
-  { value: "HightoLow", label: "High to Low" }
+  { value: "HightoLow", label: "High to Low" },
 ];
 
 export const ourService = [
   {
-    // icon: <RiShoppingCart2Line fill="orange" />,
-    title: "NO COST DELIVERY",
-    text: "Consectetur adipi elit lorem ipsum dolor sit amet.",
+    title: "Product Listing Optimization",
+    text: "We optimize product titles, descriptions, and attributes to improve search engine visibility and attract potential customers.",
   },
   {
-    // icon: <TbCertificate stroke="orange" />,
-    title: "QUALITY GUARANTEE",
-    text: "Amet consectetur adipi elit loreme ipsum dolor sit.",
+    title: "Inventory Management",
+    text: "We help you manage inventory levels effectively to prevent stockouts and overstock situations.",
   },
   {
-    // icon: <RiSecurePaymentLine fill="orange" />,
-    title: "SECURE PAYMENT",
-    text: "Consectetur adipi elit lorem ipsum dolor sit amet.",
+    title: "Product Variations and Options",
+    text: "We configure product variations such as size, color, and style options to provide customers with a wide selection of choices.",
   },
   {
-    // icon: <LuTags stroke="orange" />,
-    title: "DAY BY DAY OFFERS",
-    text: "Dolor sit amet orem ipsu mcons ectetur adipi elit.",
+    title: "Product Bundling and Kits",
+    text: "We create bundled product offerings and kits to encourage upselling and increase average order value.",
+  },
+  {
+    title: "Cross-Selling and Up-Selling",
+    text: "We implement cross-selling and up-selling features to recommend related or complementary products to customers during the checkout process.",
+  },
+  {
+    title: "Product Reviews and Ratings",
+    text: "We integrate product review and rating systems to build trust and credibility with potential customers.",
   },
 ];
