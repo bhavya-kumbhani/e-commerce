@@ -100,7 +100,7 @@ export default function Signup() {
               <Input
                 type={showPassword?.confirmPassword ? "text" : "password"}
                 name="confirmPassword"
-                placeholder="confirm Password"
+                placeholder="Confirm Password"
                 label="confirmPassword"
                 pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                 title="Must contain at least one number, uppercase, lowercase, specialChar and at least 6 or more characters"

@@ -22,7 +22,7 @@ const Header = () => {
     <div className="mb-2 flex items-center justify-between p-5 text-gray-500 shadow-md">
       <div className="cursor-pointer">
         {" "}
-        <a href="https://flowbite.com/" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             className="h-8 me-3"
