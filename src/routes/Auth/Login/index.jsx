@@ -8,7 +8,7 @@ import { setUserInfo } from "../../../store/slices/authSlice";
 import { useDispatch } from "react-redux";
 export default function Login() {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
@@ -41,7 +41,7 @@ export default function Login() {
     if (!user) {
       return toast.error("User not found or incorrect password");
     }
-    dispatch(setUserInfo({ ...user, isLogin: true }))
+    dispatch(setUserInfo({ ...user, isLogin: true }));
     localStorage.setItem(
       "authUser",
       JSON.stringify({ ...user, isLogin: true })
@@ -72,6 +72,7 @@ export default function Login() {
                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 title="Please enter a valid email address"
                 isRequired
+                className={"p-2 mt-8 rounded-xl border"}
               />
               <Input
                 type={showPassword ? "text" : "password"}
@@ -85,6 +86,7 @@ export default function Login() {
                 onRightIconClick={() => onClick("password")}
                 value={inputValue.password}
                 isRequired
+                className={"p-2 mt-8 rounded-xl border"}
               />
               <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
                 Login

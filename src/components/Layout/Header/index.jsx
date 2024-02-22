@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-5 text-gray-500 shadow-md">
+    <div className="mb-2 flex items-center justify-between p-5 text-gray-500 shadow-md">
       {/* on click on logo navigate to home */}
       <div className="cursor-pointer">
         {" "}
@@ -31,7 +31,7 @@ const Header = () => {
             class="h-8 me-3"
             alt="FlowBite Logo"
           />
-          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-dark">
             Flowbite
           </span>
         </a>
@@ -88,7 +88,7 @@ const Header = () => {
           id="dropdownAvatarName"
           className={`z-10 ${
             isDropdownOpen ? "block" : "hidden"
-          } bg-dark divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 absolute top-[45px] right-[-10px] bg-white`}
+          } divide-y divide-gray-100 rounded-lg shadow w-44 dark:divide-gray-600 absolute top-[45px] right-[-10px] bg-white`}
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-dark">
             <div className="font-medium ">{userInfo?.name}</div>
@@ -97,7 +97,7 @@ const Header = () => {
           <div className="py-2">
             <div
               onClick={handleSignOut}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              className="block px-4 py-2 text-sm hover:bg-slate-300 dark:hover:bg-slate-300"
             >
               Sign out
             </div>

@@ -9,14 +9,14 @@ import { setSignUpUserData } from "../../../store/slices/authSlice";
 
 export default function Signup() {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState({});
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
   });
-  // let storedUserData = localStorage.getItem("signUpUserData") || [];
-  // let storedData = storedUserData.length > 0 ? JSON.parse(storedUserData) : [];
+  let storedUserData = localStorage.getItem("signUpUserData") || [];
+  let storedData = storedUserData.length > 0 ? JSON.parse(storedUserData) : [];
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
@@ -39,12 +39,12 @@ export default function Signup() {
       email: inputValue.email,
       password: inputValue.password,
     };
-    // if (storedData) {
-    //   storedData.push(body);
-      dispatch(setSignUpUserData(body))
-      // localStorage.setItem("signUpUserData", JSON.stringify(storedData));
+    if (storedData) {
+      storedData.push(body);
+      dispatch(setSignUpUserData(body));
+      localStorage.setItem("signUpUserData", JSON.stringify(storedData));
       navigate("/login");
-    // }
+    }
   };
   return (
     <>
@@ -68,6 +68,7 @@ export default function Signup() {
                 pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){0,16}[a-zA-Z0-9]$"
                 title="User name can only use letters, numbers, underscores and minimum length is 2 characters"
                 isRequired
+                className={"p-2 mt-8 rounded-xl border"}
               />
               <Input
                 type="email"
@@ -79,6 +80,7 @@ export default function Signup() {
                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 title="Please enter a valid email address"
                 isRequired
+                className={"p-2 mt-8 rounded-xl border"}
               />
               <Input
                 type={showPassword?.password ? "text" : "password"}
@@ -92,6 +94,7 @@ export default function Signup() {
                 onRightIconClick={() => onClick("password")}
                 value={inputValue.password}
                 isRequired
+                className={"p-2 mt-8 rounded-xl border"}
               />
               <Input
                 type={showPassword?.confirmPassword ? "text" : "password"}
@@ -105,6 +108,7 @@ export default function Signup() {
                 onRightIconClick={() => onClick("confirmPassword")}
                 value={inputValue.confirmPassword}
                 isRequired
+                className={"p-2 mt-8 rounded-xl border"}
               />
 
               <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">

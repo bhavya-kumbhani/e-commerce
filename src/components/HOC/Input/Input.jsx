@@ -14,6 +14,7 @@ export default function Input({
   placeholder,
   iconRight,
   onRightIconClick,
+  className
 }) {
   return (
     <>
@@ -26,7 +27,7 @@ export default function Input({
           name={name}
           type={type || "text"}
           required={isRequired}
-          className="p-2 mt-8 rounded-xl border"
+          className={className}
           placeholder={placeholder}
           title={title}
           pattern={pattern}

@@ -10,9 +10,7 @@ function App() {
   return (
     <div className="h-full">
       <Toaster />
-      <Header />
       <RouterProvider router={router} />
-      <Footer/>
     </div>
   );
 }
