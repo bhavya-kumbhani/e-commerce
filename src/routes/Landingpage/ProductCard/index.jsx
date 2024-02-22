@@ -147,7 +147,7 @@ const ProductCard = () => {
           })}
         </Slider>
         <div
-          className="flex justify-end items-center gap-2 pr-4 pt-2 cursor-pointer"
+          className="flex justify-end items-center gap-2 pr-4 pt-5 cursor-pointer"
           onClick={() => navigate("/product")}
         >
           View all <FontAwesomeIcon icon={faArrowRight} />
