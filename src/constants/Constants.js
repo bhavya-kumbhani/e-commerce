@@ -42,6 +42,11 @@ export const bannerData = [
   },
 ];
 
+export const filterOptions = [
+  { value: "LowtoHigh", label: "Low to High" },
+  { value: "HightoLow", label: "High to Low" }
+];
+
 export const ourService = [
   {
     // icon: <RiShoppingCart2Line fill="orange" />,

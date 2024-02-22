@@ -4,8 +4,6 @@ import {
   findAllProducts,
   getAllCategories,
 } from "../../store/slices/productSlice";
-
-import { getSession } from "../../helpers/api/authHelper";
 import HeroSection from "./HeroSection";
 import ProductCard from "./ProductCard";
 import Header from "../../components/Layout/Header";
