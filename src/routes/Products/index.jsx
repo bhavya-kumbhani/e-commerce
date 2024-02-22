@@ -5,6 +5,7 @@ import {
   getAllCategories,
 } from "../../store/slices/productSlice";
 import ProductListView from "./ProductListView";
+import Header from "../../components/Layout/Header";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Products = () => {
   }, []);
   return (
     <>
+      <Header />
       <ProductListView />
     </>
   );

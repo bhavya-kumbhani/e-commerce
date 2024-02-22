@@ -1,9 +1,7 @@
 import {
   faArrowRight,
-  faArrowRightArrowLeft,
   faLeftLong,
   faRightLong,
-  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -15,7 +13,7 @@ const ProductCard = () => {
   const navigate = useNavigate();
   const { productData } = useSelector((state) => state.product);
   function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
+    const { onClick } = props;
     return (
       <div onClick={onClick} className="right-arrow">
         <FontAwesomeIcon icon={faRightLong} />
@@ -24,7 +22,7 @@ const ProductCard = () => {
   }
 
   function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
+    const { onClick } = props;
     return (
       <div onClick={onClick} className="left-arrow">
         <FontAwesomeIcon icon={faLeftLong} />
@@ -90,7 +88,6 @@ const ProductCard = () => {
 
   return (
     <>
-      {/* <div className="flex items-center justify-center gap-10 flex-wrap"> */}
       <div className="pt-[80px] pb-[80px] bg-indigo-100">
         <div className="flex flex-col justify-center items-center ">
           <h1 className="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-gray-800 dark:text-white pb-[40px]">
@@ -100,12 +97,8 @@ const ProductCard = () => {
         <Slider {...settings}>
           {productData?.data?.map((item, index) => {
             return (
-              <div className="max-w-xs mx-auto w-96">
-                {" "}
-                {/* Ensure max width of the container */}
+              <div className="max-w-xs mx-auto w-96" key={index}>
                 <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 h-500 p-2 dark:border-gray-700 hover:shadow-lg cursur-pointer">
-                  {" "}
-                  {/* Set width and height of card */}
                   <a href="#" className="flex justify-center">
                     <img
                       className="rounded-t-lg w-full h-auto"
@@ -153,7 +146,6 @@ const ProductCard = () => {
           View all <FontAwesomeIcon icon={faArrowRight} />
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 };

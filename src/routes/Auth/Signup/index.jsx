@@ -4,7 +4,7 @@ import HideIcon from "../../../assets/icons/hide.svg";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Input from "../../../components/HOC/Input/Input";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSignUpUserData } from "../../../store/slices/authSlice";
 import RegisterImg from "../../../assets/image/login-img.jpg";
 
@@ -56,7 +56,7 @@ export default function Signup() {
           <div class="md:w-1/2 px-8 ">
             <h2 class="font-bold text-2xl text-[#002D74]">Sign Up</h2>
             <p class="text-xs mt-4 text-[#002D74]">
-              If you are already a member, easily log in
+              If you don't have an account, easily register
             </p>
 
             <form action="" class="flex flex-col gap-4" onSubmit={handleForm}>
@@ -113,29 +113,25 @@ export default function Signup() {
               />
 
               <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
-                Login
+                Sign Up
               </button>
             </form>
 
-
-
-            <div class="mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]">
-              <a href="#">Forgot your password?</a>
-            </div>
+            <div class="text-xs border-b border-[#002D74] py-4 text-[#002D74]"></div>
 
             <div class="mt-3 text-xs flex justify-between items-center text-[#002D74]">
-              <p>Don't have an account?</p>
-              <button class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">
-                Register
+              <p>Already have an account?</p>
+              <button
+                class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300"
+                onClick={() => navigate("/login")}
+              >
+                Login
               </button>
             </div>
           </div>
 
           <div class="md:block hidden w-1/2">
-            <img
-              class="rounded-2xl"
-              src={RegisterImg}
-            />
+            <img class="rounded-2xl" src={RegisterImg} />
           </div>
         </div>
       </section>

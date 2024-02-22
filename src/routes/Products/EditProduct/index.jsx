@@ -36,8 +36,8 @@ const EditProduct = ({
     dispatch(updateProduct({ id: rowId, payload: inputValue }))
       .then((res) => {
         if (res.payload) {
-          toast.success("Product Updated Successfully!");
           alert(JSON.stringify(inputValue));
+          toast.success("Product Updated Successfully!");
           handleToggle();
         }
       })

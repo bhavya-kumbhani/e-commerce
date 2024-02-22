@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { getSession, logout } from "../../../helpers/api/authHelper";
+import { logout } from "../../../helpers/api/authHelper";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "../../../store/slices/authSlice";
 
@@ -22,7 +20,6 @@ const Header = () => {
 
   return (
     <div className="mb-2 flex items-center justify-between p-5 text-gray-500 shadow-md">
-      {/* on click on logo navigate to home */}
       <div className="cursor-pointer">
         {" "}
         <a href="https://flowbite.com/" className="flex items-center">
@@ -91,7 +88,7 @@ const Header = () => {
           } divide-y divide-gray-100 rounded-lg shadow w-44 dark:divide-gray-600 absolute top-[45px] right-[-10px] bg-white`}
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-dark">
-            <div className="font-medium ">{userInfo?.name}</div>
+            <div className="font-medium ">Welcome , {userInfo?.name}!</div>
             <div className="truncate">{userInfo?.email}</div>
           </div>
           <div className="py-2">

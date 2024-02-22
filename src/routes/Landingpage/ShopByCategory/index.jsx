@@ -4,7 +4,6 @@ export default function ShopByCategory() {
     return (
         <section>
             <div className="flex justify-center items-center">
-                {/* <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ ---> */}
                 <div className="2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
                     <div className="flex flex-col jusitfy-center items-center space-y-10">
                         <div className="flex flex-col justify-center items-center ">

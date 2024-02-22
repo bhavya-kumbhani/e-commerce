@@ -24,8 +24,15 @@ export default function Login() {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    const storedData = JSON.parse(localStorage.getItem("signUpUserData") || []);
-    const user = storedData.find(
+    const storedData = localStorage.getItem("signUpUserData");
+
+    if (!storedData) {
+      return toast.error("No user data found");
+    }
+
+    const parsedData = JSON.parse(storedData);
+
+    const user = parsedData?.find(
       (item) =>
         item.email === inputValue.email && item.password === inputValue.password
     );
@@ -109,10 +116,7 @@ export default function Login() {
 
           {/* <!-- image --> */}
           <div class="md:block hidden w-1/2">
-            <img
-              class="rounded-2xl"
-              src={LoginImg}
-            />
+            <img class="rounded-2xl" src={LoginImg} />
           </div>
         </div>
       </section>
