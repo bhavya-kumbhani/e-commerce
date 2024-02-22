@@ -10,6 +10,12 @@
     padding: 0 8px;
 }
 
+.slick-dots {
+    bottom: 35px !important;
+}
+.slick-dots li button:before {
+    font-size: 14px !important;
+}
 .right-arrow {
     width: 42px;
     height: 42px;
