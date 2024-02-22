@@ -57,17 +57,17 @@ export default function Login() {
 
   return (
     <>
-      <section class="bg-gray-50 min-h-screen flex items-center justify-center">
+      <section className="bg-gray-50 min-h-screen flex items-center justify-center">
         {/* <!-- login container --> */}
-        <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+        <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
           {/* <!-- form --> */}
-          <div class="md:w-1/2 px-8">
-            <h2 class="font-bold text-2xl text-[#002D74]">Login</h2>
-            <p class="text-xs mt-4 text-[#002D74]">
+          <div className="md:w-1/2 px-8">
+            <h2 className="font-bold text-2xl text-[#002D74]">Login</h2>
+            <p className="text-xs mt-4 text-[#002D74]">
               If you are already a member, easily log in
             </p>
 
-            <form action="" class="flex flex-col gap-4" onSubmit={handleForm}>
+            <form action="" className="flex flex-col gap-4" onSubmit={handleForm}>
               <Input
                 type="email"
                 name="email"
@@ -94,19 +94,19 @@ export default function Login() {
                 isRequired
                 className={"p-2 w-full rounded-xl border"}
               />
-              <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
+              <button className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
                 Login
               </button>
             </form>
 
-            <div class="mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]">
+            <div className="mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]">
               <a href="#">Forgot your password?</a>
             </div>
 
-            <div class="mt-3 text-xs flex justify-between items-center text-[#002D74]">
+            <div className="mt-3 text-xs flex justify-between items-center text-[#002D74]">
               <p>Don't have an account?</p>
               <button
-                class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300"
+                className="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300"
                 onClick={() => navigate("/signup")}
               >
                 Register
@@ -115,8 +115,8 @@ export default function Login() {
           </div>
 
           {/* <!-- image --> */}
-          <div class="md:block hidden w-1/2">
-            <img class="rounded-2xl" src={LoginImg} />
+          <div className="md:block hidden w-1/2">
+            <img className="rounded-2xl" src={LoginImg} />
           </div>
         </div>
       </section>
